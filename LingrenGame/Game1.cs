@@ -43,7 +43,7 @@ namespace LingrenGame
         {
             // TODO: Add your initialization logic here
         
-            ClientConfig = new NetPeerConfiguration("myGame");
+            ClientConfig = new NetPeerConfiguration("S00141926");
             //for the client
             ClientConfig.EnableMessageType(NetIncomingMessageType.DiscoveryResponse);
             client = new NetClient(ClientConfig);
@@ -157,10 +157,13 @@ namespace LingrenGame
                             thisPlayer = new GamePlayer(client, Guid.NewGuid(), ImageName,
                                           new Vector2(Utility.NextRandom(100, GraphicsDevice.Viewport.Width - 100),
                                                        Utility.NextRandom(100, GraphicsDevice.Viewport.Height - 100)));
-
                         }
-
+                        if (InGameMessage == ClientConfig.AppIdentifier)
+                        {
+                            client.Connect(ServerMessage.SenderEndPoint);
+                        }
                         break;
+
                     case NetIncomingMessageType.StatusChanged:
                         // handle connection status messages
                         switch (ServerMessage.SenderConnection.Status)

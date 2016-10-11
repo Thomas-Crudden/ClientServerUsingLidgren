@@ -11,7 +11,7 @@ namespace GameServerConsole
 {
     class Program
     {
-        static NetPeerConfiguration config = new NetPeerConfiguration("myGame")
+        static NetPeerConfiguration config = new NetPeerConfiguration("S00141926")
         {
             Port = 12345
         };
